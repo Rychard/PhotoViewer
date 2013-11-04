@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="PhotoViewer.Controls.NavigationUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mahApps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="75" d:DesignWidth="500"
+             DataContext="{Binding Source={StaticResource Locator}, Path=Navigation}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+                <ResourceDictionary Source="../Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0,5">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <mahApps:ToggleSwitch IsChecked="{Binding ShowActualSize}" VerticalAlignment="Center" OnLabel="" OffLabel="" Header="Actual Size"  Margin="5, 0"/>
+
+            <StackPanel Orientation="Vertical" Margin="5, 0">
+                <Button Width="48" Height="48" Style="{DynamicResource MetroCircleButtonStyle}" Command="{Binding PreviousCommand}">
+                    <Rectangle Width="20" Height="20">
+                        <Rectangle.Fill>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_left}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Button>
+                <TextBlock Text="Back" HorizontalAlignment="Center" />
+            </StackPanel>
+
+            <StackPanel Orientation="Vertical" Margin="5, 0">
+                <Button Width="48" Height="48" Style="{DynamicResource MetroCircleButtonStyle}" Command="{Binding NextCommand}">
+                    <Rectangle Width="20" Height="20">
+                        <Rectangle.Fill>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_right}" />
+                        </Rectangle.Fill>
+                    </Rectangle>
+                </Button>
+                <TextBlock Text="Next" HorizontalAlignment="Center" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

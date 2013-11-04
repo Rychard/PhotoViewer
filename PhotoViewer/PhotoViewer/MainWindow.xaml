@@ -1,0 +1,54 @@
+﻿<mahApps:MetroWindow x:Class="PhotoViewer.MainWindow"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mahApps="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     xmlns:controls="clr-namespace:PhotoViewer.Controls"
+                     xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                     SaveWindowPosition="true"
+                     Title="{Binding ImageFileName, StringFormat='Photo Viewer - {0}'}" Height="350" Width="525"             
+                     DataContext="{Binding Source={StaticResource Locator}, Path=MainWindow}" KeyUp="OnKeyUp">
+    <i:Interaction.Behaviors>
+    </i:Interaction.Behaviors>
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colours.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/blue.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseDark.xaml" />
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0">
+            <!-- Menus and such? -->
+        </Grid>
+        
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <controls:ImageDisplayUserControl Grid.Column="0" />
+            <controls:ExifDataUserControl Grid.Column="1" />
+        </Grid>
+        
+        <Grid Grid.Row="2">
+            <controls:ThumbnailNavigationUserControl />
+        </Grid>
+        
+        <Grid Grid.Row="3" Background="{StaticResource AccentColorBrush}">
+            <controls:NavigationUserControl/>
+        </Grid>
+    </Grid>
+</mahApps:MetroWindow>
